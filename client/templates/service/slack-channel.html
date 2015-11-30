@@ -1,0 +1,25 @@
+
+
+<div ng-controller="SlackChannelController as slack">
+   
+    <table>
+        <tr>
+            <td>Team</td>
+            <td>Erstellbar</td>
+        </tr>
+        <tr>
+            <td>Channel Name</td>
+            <td>{{slack.channelName}}</td>
+        </tr>
+        <tr>
+            <td>Channel Purpose</td>
+            <td>{{slack.channelPurpose}}</td>
+        </tr>
+        <tr>
+            <td>Invited User <p class="hint">Select user you want invite.</p></td>
+            <td>
+                <users ng-selected-users="slack.selectedUsers" ng-selectable-users="slack.selectableUsers"></users>
+            </td>
+        </tr>
+    </table>
+</div>

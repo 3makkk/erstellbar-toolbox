@@ -1,0 +1,27 @@
+<!doctype html>
+<html lang="en" ng-app="app">
+<head>
+    <meta charset="utf-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>Erstellbar Toolbox</title>
+    <link href='https://fonts.googleapis.com/css?family=Open+Sans:400,700,600' rel='stylesheet' type='text/css'>
+    <link href="./assets/css/app.css" rel="stylesheet" type="text/css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+    <script src="https://apis.google.com/js/client.js"></script>
+    <script src="./assets/js/foundation.js"></script>
+    <script src="./assets/js/templates.js"></script>
+    <script src="./assets/js/routes.js"></script>
+    <script src="./assets/js/app.js"></script>
+</head>
+<body>
+<div class="grid-frame vertical">
+    <div ui-view class="grid-block fadeIn">
+        <noscript class="grid-container">
+                <div class="grid-content text-center">
+                    <h1>Please enable Javascript</h1>
+                </div>
+        </noscript>
+    </div>
+</div>
+</body>
+</html>

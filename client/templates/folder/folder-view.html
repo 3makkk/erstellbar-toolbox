@@ -1,0 +1,8 @@
+<div ng-if="parent = node.getParentNode()" class="folder">
+    <i class="fa fa-folder" ng-class="{'fa-folder-open': folderOpen}"></i>
+    <a href="" ng-click="openFolder(parent); folderOpen = true">..</a>
+</div>
+<div ng-repeat="childNode in node.getChildren()" class="folder">
+    <i class="fa fa-folder" ng-class="{'fa-folder-open': folderOpen}"></i>
+    <a href="" ng-click="openFolder(childNode); folderOpen = true">{{childNode.value}}</a>
+</div>

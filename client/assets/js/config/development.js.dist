@@ -1,0 +1,25 @@
+/**
+ * Created by emak on 21.10.15.
+ */
+(function () {
+
+    angular.module('app.config', [])
+        .constant('ENV', 'development')
+        /**
+         * Dropbox
+         */
+        .constant('DROPBOX_APP_KEY', '')
+        .constant('DROPBOX_REDIRECT_URI', '')
+        /**
+         * Slack
+         */
+        .constant('SLACK_APP_KEY', '')
+        .constant('SLACK_APP_SECRET', '')
+        .constant('SLACK_REDIRECT_URI', '')
+        /**
+         * Trello
+         */
+        .constant('TRELLO_APP_KEY', '')
+        .constant('TRELLO_APP_SECRET', '');
+
+})();

@@ -1,0 +1,50 @@
+@import "settings";
+@import "foundation";
+@import "../../../bower_components/font-awesome/scss/font-awesome";
+@import "sidebar";
+@import "project-header";
+@import "services";
+@import "dropbox";
+@import "profile";
+
+
+.button {
+  &.radius {
+    border-radius: 4px;
+  }
+
+  &.small {
+    //font-size: .8em;
+    padding: .5em .8em;
+  }
+}
+
+
+
+.panel.is-active {
+  .sidebar {
+    padding-top: 2em;
+    height: 100%;
+  }
+}
+
+
+progress {
+  margin-top: 2rem;
+}
+
+
+.add-service {
+  display: inline-block;
+  
+  @include breakpoint(medium) {
+    display: none;
+  }
+}
+
+
+ul.error {
+	list-style: square;
+	color: $alert-color;
+}
+

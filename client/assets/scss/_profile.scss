@@ -1,0 +1,69 @@
+.profiles {
+  display: flex;
+}
+
+.profile {
+  display: block;
+  height: 48px;
+  width: 48px;
+  margin-right: ($global-padding / 2);
+  background-image: url('../img/profile.png');
+  border-radius: $global-radius;
+
+  &:hover {
+    span {
+      display: block;
+    }
+  }
+
+  span {
+    display: none;
+    text-align: center;
+    line-height: 48px;
+    font-size: 2em;
+    background-color: rgba(#000, 0.5);
+    color: #fff;
+    border-radius: $global-radius;
+    cursor: pointer;
+  }
+}
+
+.add-user-btn {
+  background: #eef2f5;
+  display: block;
+
+  span {
+    display: block;
+    background-color: transparent;
+  }
+}
+
+.user-select-panel {
+  padding: 2.5em 2em 0 2em;
+
+  .user-select-title {
+    border-bottom: 2px solid #eef2f5;
+    font-weight: bold;
+    font-size: 1.0rem;
+    padding-bottom: .5rem;
+
+  }
+
+  .user-row {
+    display: flex;
+    padding: $global-spacing;
+    cursor: pointer;
+    border-radius: $global-radius;
+
+    &:hover {
+      background-color: #eef2f5;
+    }
+
+    .info {
+      span {
+        display: block;
+        font-size: .7rem;
+      }
+    }
+  }
+}

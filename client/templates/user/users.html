@@ -1,0 +1,17 @@
+<div zf-panel="" class="user-select-panel" data-position="top" id="user-select-private">
+    <a zf-close="" class="close-button">×</a>
+    <h3 class="user-select-title">Choose user to invite.</h3>
+    <div ng-hide="selectableUsersAvailable">No users available.</div>
+    <div class="grid-block medium-up-2">
+        <div class="grid-content" ng-repeat="user in selectableUsers">
+            <div class="user-row " ng-click="select(user) ">
+                <div class="profile " style="background-image: url({{user.profile.image_48}}) "></div>
+                <div class="info ">{{user.real_name}} <span>{{user.name}}</span></div>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="profiles ">
+    <div ng-repeat="user in selectedUsers " class="profile " style="background-image: url({{user.profile.image_48}}) "><span ng-click="unselect(user) ">✖</span></div>
+    <div zf-toggle="user-select-private " class="profile add-user-btn "><span>+</span></div>
+</div>

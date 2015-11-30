@@ -1,0 +1,128 @@
+main.services {
+  border-top: #e5ebf0;
+  //padding: 2em $global-padding*3;
+
+  >.grid-content {
+    padding: $global-padding;
+  }
+
+  @include breakpoint(large) {
+    >.grid-content {
+      padding: 2em $global-padding*4;
+    }
+  }
+}
+
+.box {
+  $mainbox-header-bg-color: #6f7d95;
+  $mainbox-header-button-bg-color: #7c8ba6;
+  $mainbox-border-color: #e5ecf1;
+
+  position: relative;
+  padding: 0;
+  overflow: hidden;
+  border-radius: $global-radius;
+  margin-bottom: $block-padding;
+  border: 1px solid $mainbox-border-color;
+
+  .close-button {
+    background-color: $mainbox-header-button-bg-color;
+    border-top: 1px solid scale_color($mainbox-header-button-bg-color, $lightness: 10);
+    border-bottom: 1px solid scale_color($mainbox-header-button-bg-color, $lightness: -20);
+    top: 0.7rem;
+    right: 1rem;
+    font-size: 1rem;
+    padding: .5rem;
+    border-radius: $global-radius;
+    color: #fff;
+
+    &:hover {
+      background-color: scale_color($mainbox-header-button-bg-color, $lightness: 2);
+    }
+
+    &:active {
+      background-color: scale_color($mainbox-header-button-bg-color, $lightness: -15);
+      border-bottom-color: scale_color($mainbox-header-button-bg-color, $lightness: -15);
+      border-top-color: scale_color($mainbox-header-button-bg-color, $lightness: -30);
+    }
+
+    @include breakpoint(medium) {
+      top: 1.25rem;
+      right: 2rem;
+      padding: 1rem;
+    }
+  }
+
+
+  .box-section {
+    padding: 1em;
+    background-color: #fff;
+    border-radius: 0 0 $global-radius $global-radius;
+
+    @include breakpoint(medium) {
+      padding: 2em;
+    }
+  }
+
+  .box-divider {
+    transition: all .5s;
+    padding: 1rem;
+    background-color: $mainbox-header-bg-color;
+    border-radius: $global-radius $global-radius 0 0;
+    color: #fff;
+    text-transform: uppercase;
+    font-weight: bold;
+    font-size: .9rem;
+
+    @include breakpoint(medium) {
+      padding: 2rem;
+    }
+  }
+
+  .hint {
+    text-transform: none;
+    font-size: .8rem;
+    margin-top: .5rem;
+    display: block;
+  }
+
+  pre {
+    padding: 1px;
+  }
+
+  table {
+    width: 100%;
+    font-size: .9rem;
+
+    tr {
+      border-bottom: 2px solid #eef2f5;
+
+      td {
+        padding: .5rem 0;
+        vertical-align: top;
+        width: 100%;
+        display: block;
+
+        @include breakpoint(medium) {
+          padding: 1rem 4rem 1rem 0;
+          width: auto;
+          display: table-cell;
+        }
+
+        &:first-child {
+          font-weight: bold;
+          text-transform: uppercase;
+
+          @include breakpoint(medium) {
+            width: 30%;
+          }
+
+        }
+      }
+
+      &:last-child {
+        border-bottom: 0;
+      }
+    }
+  }
+}

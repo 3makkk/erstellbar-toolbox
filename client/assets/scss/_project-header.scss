@@ -1,0 +1,98 @@
+
+header.general-information {
+
+  $header-border-color: #d8dfe5;
+  background-color: #fff;
+  border-bottom: 1px solid $header-border-color;
+  padding: $global-padding*1 $global-padding*0.5;
+
+  @include breakpoint(large) {
+      padding: 2.5rem 3.5rem 3rem 3.5rem;
+  }
+
+  .contenteditable {
+    border-bottom: 2px solid transparent;
+    outline: 0;
+
+    &:focus {
+      border-bottom-color: lighten($header-border-color, 5);
+    }
+
+    &:hover {
+      border-bottom-color: lighten($header-border-color, 10);
+    }
+
+    &.ng-invalid {
+      border-bottom-color: $alert-color;
+    }
+  }
+
+  .project-header {
+    color: #4e515e;
+    //line-height: 1em;
+    margin: 0;
+    padding: .2rem 0;
+    display: block;
+    font-size: 1em;
+    margin-top: .3em;
+    @extend .contenteditable;
+
+
+    @include breakpoint(medium) {
+      margin-bottom: .2rem;
+      margin-top: 0;
+      font-size: $h2-font-size / 1.5;
+    }
+
+    @include breakpoint(large) {
+      font-size: $h2-font-size;
+    }
+
+  }
+
+  .project-description {
+    color: $body-font-color;
+    font-size: .9rem;
+    margin-right: 1rem;
+    display: block;
+    margin-bottom: .5rem;
+    margin-top: 1rem;
+    line-height: 1.5rem;
+
+    @include breakpoint(small-only) {
+      display: none;
+    }
+
+    @include breakpoint(medium) {
+      display: inline-block;
+      margin-top: 0;
+      margin-bottom: 0;
+    }
+
+    &.project-slug {
+      color: lighten($body-font-color, 20);
+      cursor: default;
+    }
+
+    .contains-icon {
+      min-width: 6em;
+      display: inline-block;
+    }
+
+    .fa {
+      margin-right: .5em;
+    }
+  }
+
+  .button {
+    margin: 0 0 0 1em;
+
+    span {
+      display:  none;
+
+      @include breakpoint(large) {
+        display:  inline;
+      }
+    }
+  }
+}

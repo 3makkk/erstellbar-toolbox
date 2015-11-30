@@ -1,0 +1,18 @@
+<div ng-controller="TrelloController as trello">
+    <table>
+        <tr>
+            <td>Board Name</td>
+            <td>{{trello.boardName}}</td>
+        </tr>
+        <tr>
+            <td>Organization</td>
+            <td>
+                <select ng-model="trello.selectedOrganization" data-ng-change="trello.orgSelected()" ng-options="organization.displayName for organization in trello.organizations">
+                    <option value="">---  My Board --- </option>
+                </select>
+            </td>
+        </tr>
+    </table>
+</div>
+
+

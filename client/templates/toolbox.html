@@ -1,0 +1,136 @@
+---
+name: toolbox
+url: /
+controller: ToolboxController as toolbox
+---
+
+<div class="medium-grid-block medium-5 large-3" zf-panel="" data-position="left" id="sub-nav">
+    <!-- Sidebar  -->
+    <div class="vertical grid-block sidebar">
+        <!-- Search Sidebox -->
+        <div class="grid-content search-panel shrink">
+            <input type="text" ng-model="search.name" placeholder="Search service"/>
+        </div>
+        <!-- Search Sidebox End-->
+        <div class="divider"></div>
+        <div class="grid-block divider-shine vertical">
+
+            <!-- Sidebar Box  -->
+            <div class="sidebar-box grid-content shrink" ng-repeat="registered in toolbox.registerStack | filter:search:strict | orderBy:'name'">
+                <div>
+                    <h3 class="service-title">{{registered.name}}</h3>
+
+                    <p class="service-desc">{{registered.desc}}</p>
+                </div>
+                <div>
+                    <a class="button hollow success radius small" zf-close="sub-nav"
+                       ng-class="{disabled: toolbox.invalidConfig || toolbox.lock}"
+                       data-ng-click="toolbox.moveToConfiguredStack(registered)">+ add</a>
+                </div>
+            </div>
+            <!-- Sidebar Box End -->
+
+        </div> 
+        <!-- Sidebar Footer -->
+        <div class="grid-content shrink footer">
+            <p>Made by <a href="https://erstellbar.de">erstellbar.de</a></p>
+        </div>
+        <!-- Sidebar Footer End-->
+
+    </div>
+    <!-- Sidebar End -->
+    <a zf-close="" class="close-button hide-for-medium">×</a>
+</div>
+
+<!-- Content -->
+<div class="grid-block large-9 medium-7 small-12 vertical">
+
+    <!-- General Information -->
+    <header class="general-information grid-block shrink vertical">
+        <!-- Header Text Block-->
+        <div class="grid-block shrink align-justify">
+            <div class="grid-content">
+                <!-- Project Name -->
+                <h2 class="project-header contenteditable" contenteditable="{{!toolbox.lock}}"  auto-focus data-ng-model="toolbox.name" data-ng-change="toolbox.updateProject()" data-placeholder="My Project Name">{{toolbox.name}}</h2>
+                <!-- Project Name End -->
+
+                <!-- Project Desc  -->
+                <span class="project-description">
+                    <i class="fa fa-info"></i>
+                    <span data-ng-model="toolbox.desc" class="contenteditable contains-icon" contenteditable="{{!toolbox.lock}}" data-placeholder="My Project Desciption">{{toolbox.desc}}</span>
+                </span>
+                <!-- Project Desc End -->
+
+                <!-- Project Slug -->
+                <span class="project-description project-slug ">
+                    <i class="fa fa-tag"></i>
+                    <span class="slug contains-icon">{{toolbox.slug}}</span>
+                </span>
+                <!-- Project Slug End -->
+            </div>
+            <div class="grid-content shrink">
+                    <!-- Execute Service Button -->
+                    <a href="#" class="button radius success execute-service"
+                       ng-class="{'disabled hollow': toolbox.toolChainError || toolbox.invalidConfig || toolbox.lock}"
+                       ng-click="toolbox.checkTools()">
+                        <i class="fa fa-play"></i> <span>Check and execute</span>
+                    </a>
+                    <!-- Execute Service Button End -->
+
+                    <!-- Refresh Page  -->
+                    <a href="" title="Reset" class="button alert radius hollow" ng-click="toolbox.refresh()"><i class="fa fa-trash-o"></i></a>
+                    <!-- Refresh Page End -->
+            </div>
+        </div>
+        <!-- Header Text Block End -->
+
+        <!-- Progess Bar -->
+        <div class="grid-content shrink">
+            <progress class="high fadeIn" ng-class="{'low': toolbox.toolChainError}" ng-show="toolbox.lock" value="{{toolbox.executedCount}}" max="{{toolbox.configuredStack.length}}"></progress>
+        </div>
+        <!-- Progress Bar End -->
+    </header>
+    <!-- General Information End -->
+
+    <!-- Services -->
+    <main class="services medium-grid-block">
+        <div class="grid-content">
+
+            <!-- Tool -->
+            <div class="box" ng-controller="ToolController as tool" data-ng-repeat="configuredService in toolbox.configuredStack">
+                <a class="close-button" ng-hide="tool.lock" data-ng-click="toolbox.removeFromConfiguredStack(configuredService)">✖</a>
+                <!-- Tool Name -->
+                <div class="box-divider"><i class="fa" ng-class="tool.faIcon"></i> {{configuredService.name}}</div>
+                <!-- Tool Name End -->
+
+                <!-- Tool Content -->
+                <div class="box-section" ng-hide="tool.executed">
+                    <!-- Tool Messages -->
+                    <ul class="error">
+                        <li ng-repeat="toolMessage in tool.toolMessages">{{toolMessage}}</li>
+                    </ul>
+                    <!-- Tool Messages End -->
+
+                    <!-- Tool Config -->
+                    <ng-include src="configuredService.view" ng-hide="tool.showLoadAnimation"></ng-include>
+                    <!-- Tool Config End -->
+
+                    <!-- Tool Loading -->
+                    <div class="text-center" ng-show="tool.showLoadAnimation">
+                        <img src="./assets/img/balls.svg" alt=""/>
+                    </div>
+                    <!-- Tool Loading End -->
+                </div>
+                <!-- Tool Content End -->
+            </div>
+            <!-- Tool End -->
+
+            <a href="#" class="button hollow radius success order-1 add-service" zf-toggle="sub-nav">Add service</a>
+        </div>
+    </main>
+    <!-- services End -->
+</div>
+<!-- Content End -->
+
+<zf-notification-set id="main-notifications" color="success" position="top-right"></zf-notification-set>
+</div>

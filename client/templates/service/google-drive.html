@@ -1,0 +1,19 @@
+<div ng-controller="GoogleDriveController as googleDriveTool">
+
+    <table>
+        <tr>
+            <td>Destination
+                <p class="hint">
+                    Select a destination where you want to create a new folder.
+                </p>
+            </td>
+            <td>
+                <folder ng-model="googleDriveTool.rootNode" ng-async-load="googleDriveTool.enterFolder"></folder>
+            </td>
+        </tr>
+                <tr>
+            <td>New folder path</td>
+            <td><pre>{{googleDriveTool.rootNode.getPath()}}/{{googleDriveTool.folderName}}</pre></td>
+        </tr>
+    </table>
+</div>

@@ -1,0 +1,25 @@
+
+
+<div ng-controller="SlackPrivateChannelController as slackPrivate">
+
+    <table>
+        <tr>
+            <td>Team</td>
+            <td>Erstellbar</td>
+        </tr>
+        <tr>
+            <td>Private Group Name</td>
+            <td>{{slackPrivate.privateChannelName}}</td>
+        </tr>
+        <tr>
+            <td>Channel Purpose</td>
+            <td>{{slackPrivate.channelPurpose}}</td>
+        </tr>
+        <tr>
+            <td>Invited User <p class="hint">Select user you want invite.</p></td>
+            <td>
+                <users ng-seleced-users="slackPrivate.selectedUsers" ng-selectable-users="slackPrivate.selectableUsers"></users>
+            </td>
+        </tr>
+    </table>
+</div>

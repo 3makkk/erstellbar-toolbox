@@ -1,0 +1,18 @@
+<div ng-controller="DropboxController as dropbox">
+    <table>
+        <tr>
+            <td>Destination
+                <span class="hint">
+                    Select a destination where you want to create a new folder.
+                </span>
+            </td>
+            <td>
+                <folder ng-model="dropbox.rootNode" ng-async-load="dropbox.enterFolder"></folder>
+            </td>
+        </tr>
+        <tr>
+            <td>New folder path</td>
+            <td><pre>/{{dropbox.rootNode.getPath(dropbox.folderName)}}</pre></td>
+        </tr>
+    </table>
+</div>

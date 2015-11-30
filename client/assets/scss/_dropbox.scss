@@ -1,0 +1,9 @@
+
+.folder {
+  color: scale_color($body-font-color, $lightness: 50);
+  padding: .5em 0;
+
+  a {
+    margin-left: .5em;
+  }
+}
