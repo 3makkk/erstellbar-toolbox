@@ -1,27 +1,13 @@
-/**
- * Angular Toolbox Controller
- * @return {Object} Angular Controller
- */
-(function () {
+(function() {
     angular.module('toolbox')
         .controller('ToolboxController', ToolboxController);
 
     ToolboxController.$inject = ['ToolBox', 'Slug', '$scope', '$window'];
 
-    /**
-     * Toolbox Controller
-     * @param {Object} ToolBox Angular Toolbox Factory
-     * @param {Object} Slug    Slugify Service
-     * @param {Object} $scope  Angular scope
-     * @param {Object} $window Angular window
-     */
     function ToolboxController(ToolBox, Slug, $scope, $window) {
 
-        /**
-         * ViewModel
-         * @type {Object}
-         */
-        var vm  = this;
+
+        var vm = this;
 
         /**
          * Project Name
@@ -34,7 +20,7 @@
          * @type {String}
          */
         vm.slug = Slug.slugify(vm.name);
-        
+
         /**
          * Project Description
          * @type {String}
@@ -52,7 +38,7 @@
          * @type {Array}
          */
         vm.configuredStack = [];
-        
+
         /**
          * Stack of executed tools
          * @type {Array}
@@ -82,28 +68,25 @@
          */
         vm.lock = false;
 
-        /**
-         * [executed tools count
-         * @type {Number}
-         */
         vm.executedCount = 0;
 
         vm.checkToolsCount = 0;
 
-        /**
-         * Move tool from one stack to an other.
-         * 
-         * @param  {Array} Source stack
-         * @param  {Array} Target stack
-         * @param  {Object} Element to move
-         * @return {Array} Source
-         */
-        function moveElement(source, target, element) {
-            source = _.without(source, element);
-            target.push(element);
+        vm.checkTools = checkTools;
 
-            return source;
-        }
+        vm.moveToConfiguredStack = moveToConfiguredStack;
+
+        vm.moveToExecutedStack = moveToExecutedStack;
+
+        vm.removeFromConfiguredStack = removeFromConfiguredStack;
+
+        vm.updateProject = updateProject;
+        
+        vm.refresh = refresh;
+
+
+        $scope.$on('serviceError', serviceError);
+        $scope.$on('toolChecked', toolChecked);
 
         $scope.$on('serviceLoad', function() {
             vm.toolChainError = false;
@@ -127,68 +110,83 @@
          * Listen to tool errors.
          * If there is a tool error set tool chain error flag
          */
-        $scope.$on('serviceError', function() {
-            if(vm.executedCount) {
+        function serviceError() {
+            if (vm.executedCount) {
                 vm.toolChainError = true;
             }
-        });
+        }
 
-        $scope.$on('toolChecked', function(){
+        function toolChecked() {
             vm.checkToolsCount += 1;
-            if(vm.checkToolsCount === vm.configuredStack.length) {
+            if (vm.checkToolsCount === vm.configuredStack.length) {
                 $scope.$broadcast('executeServices');
-            }   
-        });
+            }
+        }
 
-        vm.checkTools = function() {
+        function checkTools() {
             vm.checkToolsCount = 0;
             $scope.$broadcast('checkTools');
-        };
+        }
 
         /**
          * Move tool to configured tool stack
          * @param  {Object} element     tool to move
          */
-        vm.moveToConfiguredStack = function(element) {
+        function moveToConfiguredStack(element) {
             vm.registerStack = moveElement(vm.registerStack, vm.configuredStack, element);
-        };
+        }
 
         /**
          * Move tool to executed tool stack
          * @param  {Object} element     tool to move
          */
-        vm.moveToExecutedStack = function(element) {
+        function moveToExecutedStack(element) {
             vm.configuredStack = moveElement(vm.configuredStack, vm.executedStack, element);
-        };
+        }
 
         /**
          * Remove tool to configured tool stack
          * @param  {Object} element     tool to move
          */
-        vm.removeFromConfiguredStack = function(element) {
+        function removeFromConfiguredStack(element) {
             vm.configuredStack = moveElement(vm.configuredStack, vm.registerStack, element);
-            vm.toolChainError = (vm.configuredStack.length) ? false: true;
-        };
+            vm.toolChainError = (vm.configuredStack.length) ? false : true;
+        }
 
         /**
          * Update project slug
          * 
          * @return {[type]} [description]
          */
-        vm.updateProject = function() {
+        function updateProject() {
             vm.slug = Slug.slugify(vm.name);
             vm.invalidConfig = vm.name === '';
-        };
+        }
 
         /**
          * Refresh hole page
          * @return {[type]} [description]
          */
-        vm.refresh = function() {
+        function refresh() {
             var result = $window.confirm('Are you shure you want to delete all configurations?');
-            if(result === true) {
+            if (result === true) {
                 $window.location.reload();
             }
-        };
+        }
+
+        /**
+         * Move tool from one stack to an other.
+         * 
+         * @param  {Array} Source stack
+         * @param  {Array} Target stack
+         * @param  {Object} Element to move
+         * @return {Array} Source
+         */
+        function moveElement(source, target, element) {
+            source = _.without(source, element);
+            target.push(element);
+
+            return source;
+        }
     }
 })();

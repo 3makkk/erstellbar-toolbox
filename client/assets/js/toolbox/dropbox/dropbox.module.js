@@ -1,6 +1,3 @@
-/**
- * Created by emak on 13.09.15.
- */
 (function() {
     'use strict';
     angular.module('tool.dropbox', [

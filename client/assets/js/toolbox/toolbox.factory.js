@@ -1,27 +1,29 @@
-angular.module('toolbox')
-    .factory('ToolBox', ToolBox);
+(function() {
+    angular.module('toolbox')
+        .factory('ToolBox', ToolBox);
 
-function ToolBox() {
+    function ToolBox() {
 
-    var serviceStack = [];
+        var serviceStack = [];
 
-    return {
-        addTool: function (service) {
-            if(_.contains(serviceStack, service) === false) {
-                serviceStack.push(service);
+        return {
+            addTool: function(service) {
+                if (_.contains(serviceStack, service) === false) {
+                    serviceStack.push(service);
+                }
+            },
+
+            removeTool: function(service) {
+                _.without(serviceStack, service);
+            },
+
+            count: function() {
+                return serviceStack.count();
+            },
+
+            list: function() {
+                return serviceStack;
             }
-        },
-
-        removeTool: function (service) {
-            _.without(serviceStack, service);
-        },
-
-        count: function () {
-            return serviceStack.count();
-        },
-
-        list: function () {
-            return serviceStack;
-        }
-    };
-}
+        };
+    }
+})();

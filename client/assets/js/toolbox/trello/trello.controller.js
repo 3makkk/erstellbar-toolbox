@@ -1,12 +1,3 @@
-/**
- * Trello Service Controller
- *
- * Control Trello Board Box
- *
- * @package trelloService
- * @author Sven Friedemann <sven@erstellbar.de>
- * @licence MIT <https://opensource.org/licenses/MIT>
- */
 (function() {
     'use strict';
 

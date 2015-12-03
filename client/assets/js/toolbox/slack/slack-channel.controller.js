@@ -1,4 +1,4 @@
- (function() {
+(function() {
      angular.module('tool.slack')
          .controller('SlackChannelController', SlackChannelController);
 
