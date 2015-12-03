@@ -1,10 +1,7 @@
-# Foundation for Apps Template
+# Erstellbar Toolbox
 
-[![devDependency Status](https://david-dm.org/zurb/foundation-apps-template/dev-status.svg)](https://david-dm.org/zurb/foundation-apps-template#info=devDependencies)
+Created by Sven Friedemann [Erstellbar.de](https://erstellbar.de)
 
-This is the default template project for Foundation for Apps, powered by Gulp, Angular, and libsass. It provides you with a basic template to get started with Foundation for Apps and Angular.
-
-If you're already an Angular developer, you may instead want to install the components into your own stack using Bower: `bower install foundation-apps`
 
 ## Requirements
 
