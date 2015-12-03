@@ -3,17 +3,12 @@
 
     var app = angular.module('tool.google-drive', [
         'toolbox',
-        'gapi'
+        'gapi',
+        'jsTag'
     ])
         .config(config)
-        .run(run)
-        .value('GoogleApp', {
-            apiKey: 'fpVj4ZT87Jj6WlYOd_E7PV5M',
-            clientId: '311425043160-j4gn18r1n4lq926dn23hr3guupmolt2q.apps.googleusercontent.com',
-            scopes: [
-              'https://www.googleapis.com/auth/drive',
-            ]
-          });
+        .run(run);
+
 
     run.$inject = ['ToolBox','GoogleDriveFactory' , '$log'];
 

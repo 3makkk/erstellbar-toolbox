@@ -28,6 +28,7 @@
     "foundation-apps": "~1.1.0",
     "ngDropbox": "git@github.com:christiansmith/ngDropbox.git",
     "slackapi-angularjs": "nickaranz/slackapi-angularjs",
-    "ngGAPI": "https://github.com/christiansmith/ngGAPI.git"
+    "ngGAPI": "https://github.com/christiansmith/ngGAPI.git",
+    "jsTag": "~0.3.6"
   }
 }

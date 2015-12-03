@@ -52,6 +52,7 @@
             'bower_components/underscore/underscore.js',
             'bower_components/ngDropbox/dropbox.js',
             'bower_components/ngGAPI/gapi.js',
+            'bower_components/jsTag/jsTag/compiled/jsTag.min.js',
 
             'bower_components/angular-trello/src/angular-trello.js',
             'bower_components/angular-3makkk-slack/dist/angular-slack.js'

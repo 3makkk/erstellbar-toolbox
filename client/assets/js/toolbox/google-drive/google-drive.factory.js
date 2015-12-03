@@ -60,7 +60,7 @@
                     // Load meta info for each getFiles
                     _.each(result.items, function(item) {
                         Drive.getFiles(item.id)
-                        .then(addToTree, fail);
+                            .then(addToTree, fail);
                     });
                 } else {
                     deffered.resolve(node);
@@ -84,7 +84,7 @@
             return deffered.promise;
         }
 
-        function createFolder(rootNode, folderName) {
+        function createFolder(rootNode, folderName, users) {
             var newFolder = {
                 title: folderName,
                 mimeType: mimeType,
@@ -93,7 +93,28 @@
                 }]
             };
 
-            return Drive.insertFiles(newFolder);
+            var deffered = Drive.insertFiles(newFolder);
+            deffered.then(inviteUser);
+
+            function inviteUser(fileResource) {
+                console.log(users);
+                var permission = {
+                    role: 'writer',
+                    type: 'user',
+                    value: '' 
+                };
+                _.each(users, function(user) {
+                    permission.value = user.value;
+                    Drive.insertPermissions(fileResource.id, permission)
+                        .catch(failed);
+                });
+
+                function failed(response) {
+                    deffered.reject(response);
+                }
+            }
+
+            return deffered;
         }
     }
 })();

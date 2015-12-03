@@ -1,5 +1,4 @@
 <div ng-controller="GoogleDriveController as googleDriveTool">
-
     <table>
         <tr>
             <td>Destination
@@ -11,7 +10,16 @@
                 <folder ng-model="googleDriveTool.rootNode" ng-async-load="googleDriveTool.enterFolder"></folder>
             </td>
         </tr>
-                <tr>
+        <tr>
+            <td>
+                User to invite
+                <p class="hint">If you choosed a folder which is already shared to specific users you dont need to reinvite them.</p>
+            </td>
+            <td>
+                <js-tag js-tag-options="googleDriveTool.jsTagOptions" ng-model="userTags"></js-tag>{{vm.userTags}}
+            </td>
+        </tr>
+        <tr>
             <td>New folder path</td>
             <td><pre>{{googleDriveTool.rootNode.getPath()}}/{{googleDriveTool.folderName}}</pre></td>
         </tr>

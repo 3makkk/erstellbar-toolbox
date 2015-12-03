@@ -4,9 +4,9 @@
     angular.module('tool.google-drive')
         .controller('GoogleDriveController', GoogleDriveController);
 
-    GoogleDriveController.$inject = ['$scope', 'GoogleDriveFactory'];
+    GoogleDriveController.$inject = ['$scope', 'GoogleDriveFactory', 'JSTagsCollection'];
 
-    function GoogleDriveController($scope, GoogleDriveFactory) {
+    function GoogleDriveController($scope, GoogleDriveFactory, JSTagsCollection) {
 
         var vm = this;
 
@@ -14,22 +14,38 @@
         vm.desc = $scope.toolbox.desc;
         vm.rootNode = null;
         vm.enterFolder = enterFolder;
+        vm.userTags = new JSTagsCollection();
+        vm.jsTagOptions = {
+            tags: vm.userTags,
+            texts: {
+                inputPlaceHolder: 'user@provider.com'
+            },
+        };
+
 
         $scope.$on('checkTools', checkTools);
         $scope.$on('executeServices', executeServices);
-        $scope.$watch('toolbox.slug', function(toolboxSlug) {vm.folderName = toolboxSlug;});
-        $scope.$watch('toolbox.desc', function(desc) {vm.desc = desc;});
+        $scope.$watch('toolbox.slug', function(toolboxSlug) {
+            vm.folderName = toolboxSlug;
+        });
+        $scope.$watch('toolbox.desc', function(desc) {
+            vm.desc = desc;
+        });
 
         init();
 
         function init() {
             GoogleDriveFactory.init()
                 .then(bindVm)
-                .then(function() {$scope.$emit('serviceLoad');})
+                .then(function() {
+                    $scope.$emit('serviceLoad');
+                })
                 .catch(authFail);
 
             function authFail(result) {
-                $scope.$emit('serviceError', {messages: [result]});
+                $scope.$emit('serviceError', {
+                    messages: [result]
+                });
             }
         }
 
@@ -54,11 +70,10 @@
         }
 
         function executeServices() {
-            GoogleDriveFactory.createFolder(vm.rootNode, vm.folderName)
-                .then(folderCreated)
-                .catch(creationFailed);
+            GoogleDriveFactory.createFolder(vm.rootNode, vm.folderName, vm.userTags.tags)
+                .then(folderCreated, creationFailed);
 
-            function folderCreated() {
+            function folderCreated(fileResult) {
                 $scope.$emit('serviceExecuted');
             }
 

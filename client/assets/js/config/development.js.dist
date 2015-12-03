@@ -20,6 +20,13 @@
          * Trello
          */
         .constant('TRELLO_APP_KEY', '')
-        .constant('TRELLO_APP_SECRET', '');
+        .constant('TRELLO_APP_SECRET', '')
+        .value('GoogleApp', {
+            apiKey: '',
+            clientId: '',
+            scopes: [
+              'https://www.googleapis.com/auth/drive',
+            ]
+        });
 
 })();
