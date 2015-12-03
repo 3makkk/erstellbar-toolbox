@@ -1,5 +1,5 @@
 {
-  "name": "foundation-apps-template",
+  "name": "erstellbar-toolbox",
   "version": "1.1.0",
   "scripts": {
     "start": "gulp"
