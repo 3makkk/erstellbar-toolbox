@@ -29,6 +29,9 @@
     "ngDropbox": "git@github.com:christiansmith/ngDropbox.git",
     "slackapi-angularjs": "nickaranz/slackapi-angularjs",
     "ngGAPI": "https://github.com/christiansmith/ngGAPI.git",
-    "jsTag": "~0.3.6"
+    "jsTag": "~0.3.6",
+    "font-awesome": "^4.6.2",
+    "angular-trello": "*",
+    "underscore": "^1.8.3"
   }
 }

@@ -11,7 +11,7 @@
     var rimraf = require('rimraf');
     var router = require('front-router');
     var sequence = require('run-sequence');
-    var minifyHTML = require('gulp-minify-html');
+    var minifyHTML = require('gulp-htmlmin');
     var uncss = require('gulp-uncss');
     var cssnano = require('gulp-cssnano');
     var jshint = require('gulp-jshint');
