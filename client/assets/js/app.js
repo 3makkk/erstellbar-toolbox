@@ -11,7 +11,6 @@
             'foundation.dynamicRouting.animations',
             'toolbox',
             'tool.dropbox',
-            'tool.mock',
             'tool.slack',
             'tool.trello',
             'tool.google-drive'
