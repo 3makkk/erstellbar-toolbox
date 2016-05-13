@@ -23,7 +23,7 @@
 
         function init() {
             return Slack.authenticate({
-                    scope: 'read,post'
+                    scope: 'identify channels:write groups:write team:read users:read'
                 })
                 .then(loadUsers);
 
