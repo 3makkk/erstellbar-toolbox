@@ -26,7 +26,7 @@
     "angular-3makkk-slack": "master",
     "angular-slugify": "~1.0.1",
     "foundation-apps": "~1.1.0",
-    "ngDropbox": "https://github.com:christiansmith/ngDropbox.git",
+    "ngDropbox": "https://github.com/christiansmith/ngDropbox.git",
     "slackapi-angularjs": "nickaranz/slackapi-angularjs",
     "ngGAPI": "https://github.com/christiansmith/ngGAPI.git",
     "jsTag": "~0.3.6",
